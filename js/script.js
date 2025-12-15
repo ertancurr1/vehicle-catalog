@@ -3,6 +3,31 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
+  // ==================== TYPE SWITCHER ====================
+
+  const typeSelector = document.getElementById("productType");
+
+  if (typeSelector) {
+    // Handle type change
+    typeSelector.addEventListener("change", function () {
+      const selectedType = this.value;
+
+      // Hide all type-specific attribute containers
+      const allTypeContainers = document.querySelectorAll(".type-attributes");
+      allTypeContainers.forEach(function (container) {
+        container.classList.remove("active");
+      });
+
+      // Show the selected type's container
+      if (selectedType) {
+        const activeContainer = document.getElementById(selectedType);
+        if (activeContainer) {
+          activeContainer.classList.add("active");
+        }
+      }
+    });
+  }
+
   // ==================== MASS DELETE CONFIRMATION ====================
 
   const deleteForm = document.getElementById("delete-form");
